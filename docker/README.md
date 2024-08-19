@@ -34,3 +34,67 @@ Notes
 
     Make sure to replace placeholders like <your-account-id> with your actual AWS account ID.
     Adjust Terraform variables and configurations according to your requirements.
+
+Architecture Diagram:
+
++--------------------------+                     +--------------------------+
+|                          |                     |                          |
+|     AWS Cloud            |                     |     AWS Cloud            |
+|     +----------------+   |                     |     +----------------+   |
+|     |                |   |                     |     |                |   |
+|     |   VPC          |   |                     |     |   VPC          |   |
+|     |   +----------+ |   |                     |     |   +----------+ |   |
+|     |   |          | |   |                     |     |   |          | |   |
+|     |   |  Public  | |   |                     |     |   |  Public  | |   |
+|     |   |  Subnet  | |   |                     |     |   |  Subnet  | |   |
+|     |   +----------+ |   |                     |     |   +----------+ |   |
+|     |                |   |                     |     |                |   |
+|     +----------------+   |                     |     +----------------+   |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   AWS ALB        |    |                     |    |   AWS ALB        |   |
+|   |   (Load Balancer)|    |                     |    |   (Load Balancer)|   |
+|   +------------------+    |                     |    +------------------+   |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   ECS Cluster    |    |                     |    |   ECS Cluster    |   |
+|   |   (Notification  |    |                     |    |   (Email Sender  |   |
+|   |   API Service)   |    |                     |    |   Service)       |   |
+|   +------------------+    |                     |    +------------------+   |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   Docker         |    |                     |    |   Docker         |   |
+|   |   Container      |    |                     |    |   Container      |   |
+|   |   (Notification  |    |                     |    |   (Email Sender  |   |
+|   |   API)           |    |                     |    |   Service)       |   |
+|   +------------------+    |                     |    +------------------+   |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   Amazon SQS     |    |                     |    |   Amazon SQS     |   |
+|   |   (Message Queue)|    |                     |    |   (Message Queue)|   |
+|   +------------------+    |                     |    +------------------+   |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   AWS App Mesh   |    |                     |    |   AWS App Mesh   |   |
+|   |   (Service Mesh) |    |                     |    |   (Service Mesh) |   |
+|   +------------------+    |                     |    +------------------+   |
+|            |             |                     |            |             |
+|            v             |                     |            v             |
+|   +------------------+    |                     |    +------------------+   |
+|   |   AWS Cloud Map  |    |                     |    |   AWS Cloud Map  |   |
+|   |   (Service       |    |                     |    |   (Service       |   |
+|   |   Discovery)     |    |                     |    |   Discovery)     |   |
+|   +------------------+    |                     |    +------------------+   |
+|                          |                     |                          |
++--------------------------+                     +--------------------------+
