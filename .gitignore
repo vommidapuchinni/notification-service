@@ -1,12 +1,12 @@
-# Ignore Terraform state files
-*.tfstate
-*.tfstate.*
-
-# Ignore Terraform directory
-.terraform/
-
-# Ignore logs and temporary files
-*.log
-*.tmp
 node_modules/
+*.log
+*.env
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+docker/*.tar
+
+# AWS CLI configuration and credentials
+.aws/
+*.aws/
 

@@ -1,15 +1,13 @@
 {
   "name": "email-sender",
   "version": "1.0.0",
+  "description": "Email Sender microservice",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "aws-sdk": "^2.1677.0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "express": "^4.17.1"
+  }
 }
+

@@ -1,27 +1,12 @@
 const express = require('express');
-const AWS = require('aws-sdk');
-
 const app = express();
-app.use(express.json());
+const port = process.env.PORT || 80;
 
-const sqs = new AWS.SQS({ region: 'us-east-1' });
-
-app.post('/notify', async (req, res) => {
-  const { message } = req.body;
-
-  const params = {
-    MessageBody: JSON.stringify(message),
-    QueueUrl: process.env.SQS_QUEUE_URL
-  };
-
-  try {
-    await sqs.sendMessage(params).promise();
-    res.status(200).send('Message sent to SQS');
-  } catch (err) {
-    res.status(500).send('Failed to send message');
-  }
+app.get('/', (req, res) => {
+  res.send('Hello from Notification API!');
 });
 
-app.listen(8080, () => {
-  console.log('Notification API listening on port 8080');
+app.listen(port, () => {
+  console.log(`Notification API running on port ${port}`);
 });
+

@@ -1,13 +1,13 @@
 {
   "name": "notification-api",
   "version": "1.0.0",
+  "description": "Notification API microservice",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "aws-sdk": "^2.1000.0"
+    "express": "^4.17.1"
   }
 }
 
